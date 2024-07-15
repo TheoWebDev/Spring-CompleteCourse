@@ -1,8 +1,13 @@
 package app.theo.demo;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -10,6 +15,7 @@ import jakarta.persistence.Table;
 public class Student {
 
     @Id
+    @GeneratedValue
     private Integer id;
     @Column(
         name = "c_fname",
@@ -17,8 +23,21 @@ public class Student {
     )
     private String firstname;
     private String lastname;
+    @Column(unique = true)
     private String email;
     private int age;
+
+    @OneToOne(
+        mappedBy = "student",
+        cascade = CascadeType.ALL
+    )
+    private StudentProfile studentProfile;
+
+    @ManyToOne
+    @JoinColumn(
+        name = "school_id"
+    )
+    private School school;
 
     public Student(){
 
@@ -69,5 +88,21 @@ public class Student {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public School getSchool() {
+        return school;
+    }
+
+    public void setSchool(School school) {
+        this.school = school;
+    }
+
+    public StudentProfile getStudentProfile() {
+        return studentProfile;
+    }
+
+    public void setStudentProfile(StudentProfile studentProfile) {
+        this.studentProfile = studentProfile;
     }
 }
