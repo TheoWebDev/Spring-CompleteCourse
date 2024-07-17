@@ -1,5 +1,6 @@
-package app.theo.demo;
+package app.theo.demo.studentprofile;
 
+import app.theo.demo.student.Student;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;

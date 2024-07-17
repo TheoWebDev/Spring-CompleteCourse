@@ -1,6 +1,8 @@
-package app.theo.demo;
+package app.theo.demo.student;
 
 import org.springframework.stereotype.Service;
+
+import app.theo.demo.school.School;
 
 @Service
 public class StudentMapper {

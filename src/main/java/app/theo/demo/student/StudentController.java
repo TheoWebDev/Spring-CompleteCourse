@@ -1,4 +1,4 @@
-package app.theo.demo;
+package app.theo.demo.student;
 
 import java.util.List;
 
@@ -28,19 +28,19 @@ public class StudentController {
     }
 
     @GetMapping("/students")
-    public List<Student> findAllStudents(){
+    public List<StudentResponseDto> findAllStudents(){
         return studentService.findAllStudents();
     }
 
     @GetMapping("/students/{student-id}")
-    public Student findStudentById(
+    public StudentResponseDto findStudentById(
         @PathVariable("student-id") Integer id
     ){
         return studentService.findStudentById(id);
     }
 
     @GetMapping("/students/search/{student-name}")
-    public List<Student> findStudentsByName(
+    public List<StudentResponseDto> findStudentsByName(
         @PathVariable("student-name") String name
     ){
         return studentService.findStudentsByName(name);

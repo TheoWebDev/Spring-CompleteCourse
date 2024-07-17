@@ -1,7 +1,9 @@
-package app.theo.demo;
+package app.theo.demo.student;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
+import app.theo.demo.school.School;
+import app.theo.demo.studentprofile.StudentProfile;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

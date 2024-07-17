@@ -1,6 +1,7 @@
-package app.theo.demo;
+package app.theo.demo.student;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
@@ -23,16 +24,24 @@ public class StudentService {
         return studentMapper.toStudentResponseDto(savedStudent);
     }
 
-    public List<Student> findAllStudents(){
-        return repository.findAll();
+    public List<StudentResponseDto> findAllStudents(){
+        return repository.findAll()
+            .stream()
+            .map(studentMapper::toStudentResponseDto)
+            .collect(Collectors.toList());
     }
 
-    public Student findStudentById(Integer id){
-        return repository.findById(id).orElse(new Student());
+    public StudentResponseDto findStudentById(Integer id){
+        return repository.findById(id)
+            .map(studentMapper::toStudentResponseDto)
+            .orElse(null);
     }
 
-    public List<Student> findStudentsByName(String name){
-        return repository.findAllByFirstnameContaining(name);
+    public List<StudentResponseDto> findStudentsByName(String name){
+        return repository.findAllByFirstnameContaining(name)
+            .stream()
+            .map(studentMapper::toStudentResponseDto)
+            .collect(Collectors.toList());
     }
 
     public void delete(Integer id){

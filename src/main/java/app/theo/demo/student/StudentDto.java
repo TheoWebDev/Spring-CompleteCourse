@@ -1,4 +1,4 @@
-package app.theo.demo;
+package app.theo.demo.student;
 
 public record StudentDto(
     String firstname,
